@@ -39,7 +39,7 @@ title: KubeEdge边缘设备管理系列（一）：基于物模型的设备管�
 ### 1. Device Model
 
 Device Model 用以描述一类边缘设备共同的设备属性。按照物模型的定义，Device Model 中新增了设备属性描述、设备属性类型、设备属性取值范围、设备属性单位等字段，如下图所示：
-```
+```yaml
 // ModelProperty describes an individual device property / attribute like temperature / humidity etc.
 type ModelProperty struct {
     // Required: The device property name.
@@ -62,7 +62,7 @@ type ModelProperty struct {
 }
 ```
 上图展示了 Device Model 的核心  `ModelProperty` 字段，其中 Type 字段定义该属性的数据类型， `AccessMode ` 定义该属性的访问方式，包括读写和只读两种。当访问方式设置为只读时，Mapper 会直接返回采集到的设备数据，反之当设置为读写后，Mapper 会对采集到的设备数据进行归一化等处理后再返回。Minimum 与 Maximum 则定义了设备属性的最大最小值，Unit 字段定义了设备属性的单位。下图展示了一个 Device Model 配置文件的示例：
-```
+```yaml
 apiVersion: devices.kubeedge.io/v1beta1
 kind: DeviceModel
 metadata:
@@ -82,7 +82,7 @@ spec:
 ### 2. Device Instance
 
 一个 Device Instance 代表一个实际的设备对象。v1beta1 版本中，Device Instance 中内置的协议配置全部移除，包括 Modbus、OPC-UA、Bluetooth 等。用户可以通过可扩展的 Protocol 配置来设置设备协议，能够实现任何协议的设备接入。Modbus、OPC-UA、Bluetooth 等内置协议的 Mapper 仍会保留在 Mappers-go 仓库中，同时也会不断增加其他协议的内置 Mapper。
-```
+```yaml
 type ProtocolConfig struct {
     // Unique protocol name
     // Required.
@@ -99,7 +99,7 @@ type CustomizedValue struct {
 ```
 
 此外，为增强 DMI 数据面功能，本次更新在 `Device Instance` 的设备属性中增加了设备数据处理的相关配置，例如设备上报频率、数据推送频率、属性是否上报云端、设备数据推送方式，如下图所示。
-```
+```yaml
 type DeviceProperty struct {
     ... 
     // Define how frequent mapper will report the value.
@@ -124,7 +124,7 @@ type DeviceProperty struct {
 目前提供 HTTP、MQTT 以及 OpenTelemetry 等方式向用户应用推送数据，并内置集成 InfluxDB、MySQL、Redis、TDengine 数据库。用户能够通过配置文件控制Mapper 向用户应用、用户数据库中定时推送设备数据，也能够通过 API 主动拉取设备数据，实现设备数据处理方式的多样化，相比于将所有数据推送至云端再行处理的传统方法，能够有效减少云边通信阻塞的风险。
 
 下图展示了一个 Device Instance 配置文件的示例：
-```
+```yaml
 apiVersion: devices.kubeedge.io/v1beta1
 kind: Device
 ...
