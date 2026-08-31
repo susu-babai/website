@@ -34,9 +34,9 @@ title: KubeEdge边缘设备管理系列（五）：Mapper-Framework设备数据�
 ## Device Method API 简介
 
 从物模型的传统定义来看，设备的参数按照功能类型通常分为三类：
-- **属性（Property）：**用于描述设备状态，例如温度传感器所读取的环境温度、插座的开关状态等。
-- **方法（Method）：**设备可被外部调用并执行的方法，例如调整设备参数等。
-- **事件（Event）：**描述设备上报云端的事件。
+- **属性（Property）**：用于描述设备状态，例如温度传感器所读取的环境温度、插座的开关状态等。
+- **方法（Method）**：设备可被外部调用并执行的方法，例如调整设备参数等。
+- **事件（Event）**：描述设备上报云端的事件。
 
 在本系列的第一篇文章中，我们已经在 v1beta1 版本的设备管理 API 中引入了设备**属性（Property）** 的定义，使用户可以获取设备的状态。而在 KubeEdge 1.19 版本中，我们进一步扩展了 API，引入了设备方法（Device Method），允许用户调用设备方法实现对设备属性的动态控制。
 
@@ -57,11 +57,11 @@ type DeviceMethod struct {
 ```
 在 Device Method 的设计中，它主要由以下三个核心字段构成：
 
-  **Name：**用于标识设备方法，在同一device-instance 内，每个方法的名称必须是唯一的。
+  **Name**：用于标识设备方法，在同一device-instance 内，每个方法的名称必须是唯一的。
 
-  **Description：**用于说明该方法的具体用途。
+  **Description**：用于说明该方法的具体用途。
 
-  **PropertyNames：**定义该方法能够操作的设备属性列表，一个方法可以控制多个设备属性
+  **PropertyNames**：定义该方法能够操作的设备属性列表，一个方法可以控制多个设备属性
 
 下面是一个 device-instance 配置文件示例，展示了如何添加 Device Method：
 ```yaml
@@ -137,7 +137,7 @@ Response:
  "Message": "Write data ** to device ** successfully."
  }
 ```
-用户通过 Restful API 发起设备数据写入请求有**两种方式：**
+用户通过 Restful API 发起设备数据写入请求有**两种方式**：
 
 **1）边缘端调用**
 
