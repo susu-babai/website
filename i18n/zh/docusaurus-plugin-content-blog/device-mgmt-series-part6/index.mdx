@@ -3,9 +3,9 @@ authors:
 - KubeEdge
 categories:
 - General
-date: 2025-03-20
+date: 2025-04-17
 draft: false
-lastmod: 2025-03-20
+lastmod: 2025-04-17
 summary: 作为系列文章的最终部分，我们将展示如何从零开始开发一个 Mapper 工程，并通过该工程实现对边缘设备的管理。
 tags:
 - KubeEdge
@@ -15,7 +15,7 @@ tags:
 - K8S edge orchestration
 - edge computing platform
 - security
-title:KubeEdge边缘设备管理系列（六）：Mapper-Framework开发示例
+title: KubeEdge边缘设备管理系列（六）：Mapper-Framework开发示例
 ---
 
 针对新版本 **Device-IoT** 领域的更新，我们计划推出一系列的文章对这些特性进行详细的介绍，大致的文章大纲为：
@@ -242,7 +242,7 @@ common:
 
 完成自定义 Mapper 工程的构建后，接下来就可以进行编译并将其部署到 KubeEdge 集群中。目前，推荐使用两种部署方式：二进制部署和 Deployment 部署。
 
-**  二进制部署二进制部署**
+**二进制部署**
 
 适合在开发和调试阶段使用。这种方式操作简便，适合快速运行和排查错误。通过以下命令，开发者可以直接在本地编译并运行 Mapper 插件：
 
@@ -251,7 +251,7 @@ go run cmd/main.go --v <log level,like 3> --config-file <path to config yaml>
 ```
 在这条命令中，`--v` 参数用来设置日志级别，日志级别越高，输出的信息越详细；`--config-file` 参数则指定了 Mapper 配置文件的路径。
 
-**  Deployment 部署**
+**Deployment 部署**
 
 当 Mapper 插件经过充分调试并能够稳定运行后，建议将其以容器的形式部署到 KubeEdge 集群中。通过使用 Mapper-Framework 生成的 `Dockerfile`，开发者可以构建 Docker 镜像并创建 `Kubernetes Deployment`，以便在生产环境中稳定运行。
 
