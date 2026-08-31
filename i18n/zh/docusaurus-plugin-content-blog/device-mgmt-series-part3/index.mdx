@@ -20,12 +20,12 @@ title: KubeEdge边缘设备管理系列（三）：Mapper-Framework设计与实�
 
 针对新版本 **Device-IoT** 领域的更新，我们计划推出一系列的文章对这些特性进行详细的介绍，大致的文章大纲为：
 
-1. 基于物模型的设备管理 API 设计与实现
-2. DMI 数据面能力设计与实现
-3. Mapper 开发框架 Mapper-Framework 设计与实现
-4. 如何使用 Mapper 完成视频流数据处理
-5. 如何使用 Mapper 实现设备数据写入
-6. 如何从头开发一个 Mapper（以 `modbus` 为例）
+1. [基于物模型的设备管理 API 设计与实现](/zh/blog/device-mgmt-series-part1)
+2. [DMI 数据面能力设计与实现](/zh/blog/device-mgmt-series-part2)
+3. [Mapper 开发框架 Mapper-Framework 设计与实现](/zh/blog/device-mgmt-series-part3)
+4. [如何使用 Mapper 完成视频流数据处理](/zh/blog/device-mgmt-series-part4)
+5. [如何使用 Mapper 实现设备数据写入](/zh/blog/device-mgmt-series-part5)
+6. [如何从头开发一个 Mapper（以 `modbus` 为例）](/zh/blog/device-mgmt-series-part6)
 
 在上一篇文章中，我们针对边缘设备海量数据管理，完成了 DMI 数据面能力增强，能够使用多种方式处理设备数据。在 KubeEdge 的实际设备管理中，设备管理插件 Mapper 需要实现 DMI 中的标准接口来完成自身向集群的注册以及设备的纳管，开发难度大。
 
@@ -113,3 +113,10 @@ Mapper 数据面能以多种方式处理边缘设备数据，适用于较多的�
 - 文档: https://kubeedge.io/docs/
 - Slack: https://kubeedge.io/docs/community/slack
 - X: https://x.com/kubeedge
+
+---
+
+**系列文章导航**
+
+- 上一篇：[KubeEdge边缘设备管理系列（二）：DMI数据面设计与实现](/zh/blog/device-mgmt-series-part2)
+- 下一篇：[KubeEdge边缘设备管理系列（四）：Mapper-Framework视频流处理](/zh/blog/device-mgmt-series-part4)
