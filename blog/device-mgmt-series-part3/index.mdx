@@ -57,6 +57,8 @@ The Mapper-Framework primarily implements the ability to push device data on the
 
 4. The Mapper-Framework provides API interfaces for users to actively retrieve device data.
 
+The functional architecture diagram of the Mapper-Framework is shown below:
+
 ![Mapper-Framework Functional Architecture](https://files.mdnice.com/user/46056/f95aa683-d9bf-49ae-8d9d-a0350649e7d7.png)
 
 Users can automatically generate Mapper projects based on Mapper-Framework. The generated Mapper projects have been pre-integrated with the upstream stream for Mapper to register itself with the cluster and the downstream stream for EdgeCore to send device management information. They also have built-in data plane capabilities for Mapper to push device data.
@@ -101,7 +103,7 @@ Users only need to implement the functionality of the driver layer and populate 
 
 Subsequent user-submitted device update and deletion commands in the cloud will be transmitted to EdgeCore via the cloud-edge channel. EdgeCore will then pass these commands to the Mapper via the DMI interface, enabling device management capabilities. Simultaneously, the Mapper data plane will periodically collect device data by invoking user-implemented device driver capabilities. Following the user's definitions in the Device Instance configuration file, this data will be pushed to the user application via protocols such as HTTP and MQTT, or saved to the user's database, completing the device data collection and reporting process.
 
-Mapper's data plane can process edge device data in various ways, making it suitable for many edge scenarios, such as temperature and humidity monitoring, and pH monitoring. In these scenarios, device data is discrete, and single-point values can be collected and reported periodically. However, in edge computing, the management of streaming data devices such as cameras is also an indispensable part. In the next article in this series, we will provide a detailed introduction to Mapper's video stream data processing capabilities.
+Mapper's data plane can process edge device data in various ways, making it suitable for many edge scenarios, such as temperature and humidity monitoring, and pH monitoring. In these scenarios, device data is discrete, and single-point values can be collected and reported periodically. However, in edge computing, the management of streaming data devices such as cameras is also an indispensable part. **In the next article in this series, we will provide a detailed introduction to Mapper's video stream data processing capabilities.**
 
 Learn more about KubeEdge:
 
